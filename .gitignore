@@ -1,0 +1,55 @@
+# ===========================
+# Node Modules
+# ===========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ===========================
+# Environment Variables
+# ===========================
+.env
+.env.local
+.env.*.local
+
+# ===========================
+# Logs
+# ===========================
+logs/
+*.log
+log.txt
+debug.log
+
+# ===========================
+# Uploads (user images, files)
+# ===========================
+uploads/
+public/uploads/
+temp/
+
+# ===========================
+# Build / Cache
+# ===========================
+dist/
+.cache/
+.tmp/
+
+# ===========================
+# System Files
+# ===========================
+.DS_Store
+Thumbs.db
+
+# ===========================
+# VSCode
+# ===========================
+.vscode/
+.history/
+
+# ===========================
+# Misc
+# ===========================
+*.pid
+*.seed
+*.tgz
