@@ -147,17 +147,23 @@ app.use((err, req, res, next) => {
 // Database connection with retry logic
 const connectDB = async () => {
   try {
-    const mongoUri = process.env.MONGODB_URI || "mongodb://localhost:27017/life-blog";
-    
-    await mongoose.connect(mongoUri);
-    
-    console.log("MongoDB connected successfully");
-    
-    // Create default admin user
+    const mongoUri = process.env.MONGO_URL;
+
+    if (!mongoUri) {
+      throw new Error("MONGO_URL not found in environment variables");
+    }
+
+    await mongoose.connect(mongoUri, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+
+    console.log("✅ MongoDB connected successfully");
+
     await createDefaultAdmin();
-    
+
   } catch (err) {
-    console.error("MongoDB connection error:", err);
+    console.error("❌ MongoDB connection error:", err);
     process.exit(1);
   }
 };
@@ -179,12 +185,13 @@ process.on('SIGINT', async () => {
 const startServer = async () => {
   await connectDB();
   
-  app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-    console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
-    console.log(`Static files served from: http://localhost:${PORT}/uploads`);
-    console.log(`Upload endpoint: http://localhost:${PORT}/api/upload/image`);
-  });
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on port ${PORT}`);
+  console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
+  console.log(`Static files served at /uploads`);
+  console.log(`Upload endpoint: /api/upload/image`);
+});
+
 };
 
 startServer().catch(console.error);
