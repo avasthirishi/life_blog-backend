@@ -28,24 +28,28 @@ if (!fs.existsSync(uploadsDir)) {
   console.log('Created uploads directory:', uploadsDir);
 }
 
-// Middleware
+// Middleware: CORS configuration
 const allowedOrigins = [
   "http://localhost:5173",
-  "http://localhost:5174",
-  "https://life-blog-frontend.vercel.app/"
+  "https://life-blog-frontend.vercel.app"
 ];
 
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        console.log("❌ CORS BLOCKED:", origin);
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 
-app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  credentials: true,
-}));
 
 
 
