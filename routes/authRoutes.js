@@ -14,8 +14,8 @@ import { authenticateToken, requireAdmin } from '../middleware/authMiddleware.js
 const router = express.Router();
 
 // Public routes (no authentication required)
-router.post('/signup', signup);
-router.post('/login', login);
+router.post('/api/auth/signup', signup);
+router.post('/api/auth/login', login);
 
 // Protected routes (authentication required)
 router.get('/profile', authenticateToken, getProfile);
