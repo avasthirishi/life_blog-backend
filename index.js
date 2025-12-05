@@ -31,8 +31,10 @@ if (!fs.existsSync(uploadsDir)) {
 // Middleware
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://life-blog-backend.onrender.com"  // <-- replace with YOUR VERCEL URL
+  "http://localhost:5174",
+  "https://life-blog-frontend.vercel.app/"
 ];
+
 
 app.use(cors({
   origin: function (origin, callback) {
@@ -44,6 +46,7 @@ app.use(cors({
   },
   credentials: true,
 }));
+
 
 
 // Increase payload limits for file uploads
