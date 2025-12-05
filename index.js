@@ -29,16 +29,22 @@ if (!fs.existsSync(uploadsDir)) {
 }
 
 // Middleware
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://life-blog-frontend.vercel.app"  // <-- replace with YOUR VERCEL URL
+];
+
 app.use(cors({
-  origin: (origin, callback) => {
-    // Allow any localhost port 5173-5180
-    if (!origin || /^http:\/\/localhost:(517[3-9]|518[0-9])$/.test(origin)) {
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
-      callback(new Error('Not allowed by CORS'));
+      callback(new Error("Not allowed by CORS"));
     }
-  }
+  },
+  credentials: true,
 }));
+
 
 // Increase payload limits for file uploads
 app.use(express.json({ limit: '10mb' }));
