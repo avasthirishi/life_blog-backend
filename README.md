@@ -248,7 +248,7 @@ Content-Type: application/json
 **Response:**
 ```json
 {
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "token": "...",
   "user": {
     "_id": "user_id",
     "name": "John Doe",
@@ -458,8 +458,8 @@ Contributions are welcome! Please follow these steps:
 **Rishikesh Kumar**  
 Full-Stack Developer
 
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Rishikesh Kumar](https://linkedin.com/in/yourprofile)
+- GitHub: (https://github.com/avasthirishi)
+- LinkedIn: [Rishikesh Kumar]((https://www.linkedin.com/in/rishikesh-awasthi-ba928b233/))
 
 ---
 
@@ -484,8 +484,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 If you have any questions or need help, please:
 
 - Open an issue on GitHub
-- Contact via email: your.email@example.com
-- Connect on LinkedIn
+- Contact via email: avasthirishi2@gmail.com
+- Connect on LinkedIn : Rishikesh Awasthi
 
 ---
 
