@@ -31,7 +31,7 @@ if (!fs.existsSync(uploadsDir)) {
 // Middleware
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://life-blog-frontend.vercel.app"  // <-- replace with YOUR VERCEL URL
+  "https://life-blog-backend.onrender.com"  // <-- replace with YOUR VERCEL URL
 ];
 
 app.use(cors({
