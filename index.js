@@ -29,15 +29,21 @@ if (!fs.existsSync(uploadsDir)) {
 }
 
 // Middleware: CORS configuration
+// Update CORS configuration
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://life-blog-frontend.vercel.app"
+  "http://localhost:5000",
+  "https://life-blog-frontend.vercel.app",
+  "https://life-blog-backend.onrender.com" // Add this
 ];
 
 app.use(
   cors({
     origin: function (origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
+      // Allow requests with no origin (mobile apps, Postman, etc.)
+      if (!origin) return callback(null, true);
+      
+      if (allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
         console.log("❌ CORS BLOCKED:", origin);
@@ -45,11 +51,13 @@ app.use(
       }
     },
     credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
+// Add preflight handling
+app.options('*', cors());
 
 
 
