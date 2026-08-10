@@ -35,7 +35,7 @@ const allowedOrigins = [
   "http://localhost:5000",
   "https://life-blog-frontend.vercel.app",
   "https://life-blog-backend.onrender.com", // Add this
-  "https://life-blog-seven.vercel.app/"
+  "https://life-blog-seven.vercel.app"
 ];
 
 app.use(
